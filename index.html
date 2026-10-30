@@ -150,79 +150,60 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 /* ---------- demo ---------- */
 .demo{padding-block:40px 120px}
 .demo-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.demo-head h2{font-size:clamp(30px,3.4vw,44px);font-weight:600;letter-spacing:-.035em;line-height:1.15;margin-top:12px}
-.demo-head .eyebrow{background:none;padding:0;border-radius:0;color:var(--ink-soft);font-weight:500;letter-spacing:.08em}
+.demo-head h2{font-size:clamp(36px,4.4vw,60px);margin-top:16px}
+.demo-head h2 em{color:var(--orange)}
 .demo .eyebrow,.how .eyebrow,.security .eyebrow{color:var(--orange-deep)}
-.playbooks{display:inline-flex;gap:24px;border-bottom:1px solid var(--line)}
-.playbooks button{border:0;border-bottom:2px solid transparent;margin-bottom:-1px;background:transparent;padding:12px 0;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--ink-soft);min-height:44px}
-.playbooks button:hover{color:var(--ink)}
-.playbooks button[aria-pressed="true"]{border-bottom-color:var(--green);color:var(--ink)}
-.demo .console{margin-top:28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:none;background:var(--paper-2)}
-.console-bar{grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--paper)}
-.call-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.call-title strong{font-size:17px;font-weight:600}
-.call-title span{color:var(--ink-soft);font-size:13px}
-.console .btn{border-radius:5px;font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;min-height:44px;padding:10px 16px;justify-content:center;transform:none}
-.console .replay{background:none;color:var(--ink-soft);padding:10px 0;flex-shrink:0}
-.console .replay:hover{color:var(--ink)}
-.pane{padding:24px;min-width:0}
-.transcript-pane{display:flex;flex-direction:column}
+.playbooks{display:inline-flex;padding:5px;border-radius:999px;background:var(--paper-2);box-shadow:inset 0 0 0 1px var(--line)}
+.playbooks button{border:0;background:transparent;border-radius:999px;padding:10px 16px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;color:var(--ink-soft)}
+.playbooks button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.console{margin-top:36px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);border-radius:24px;overflow:hidden;box-shadow:0 0 0 1px var(--line),0 30px 80px -30px rgba(0,0,0,.6);background:#181818}
+.pane{padding:28px;min-width:0}
 .pane + .pane{border-left:1px solid var(--line)}
-.pane-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--ink-soft);padding-bottom:16px;border-bottom:1px solid var(--line)}
-.pane-head strong{font-weight:600;color:var(--ink)}
+.pane-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:16px;border-bottom:1px solid var(--line)}
 .live{display:inline-flex;align-items:center;gap:8px}
-.live i{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--dim)}
 .running .live i{background:var(--orange);animation:pulse 1s infinite}
 @keyframes pulse{50%{opacity:.3}}
-.lines{list-style:none;margin:0 -12px;padding:0 12px;flex:1 1 0;min-height:560px;max-height:800px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
-.lines li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;padding:18px 12px;margin:0 -12px;border-bottom:1px solid var(--line);scroll-margin-block:12px;transition:background .2s,opacity .2s}
-.lines li.pending{opacity:.4}
-.lines li.hit,.lines li.selected{background:var(--orange-wash)}
-.lines li.selected{box-shadow:inset 2px 0 var(--green)}
-.line-number{font-size:11px;color:var(--dim);font-variant-numeric:tabular-nums;padding-top:2px}
-.lines .who{font-size:12px;margin-bottom:6px;color:var(--ink)}
-.lines .who b{font-weight:600}
-.lines .say{font-size:15px;line-height:1.65;overflow-wrap:anywhere}
-.lines li.question .say{color:var(--ink-soft)}
-.score-top{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0}
-.score-top small{font-size:12px;color:var(--ink-soft)}
-.score-top p{font-size:14px;color:var(--ink);margin-top:4px}
-.score-value{font-size:36px;font-weight:500;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
-.score-meter{height:3px;background:var(--line)}
-.score-meter span{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
-.evidence-help{font-size:12px;color:var(--ink-soft);margin:16px 0 4px}
+.lines{list-style:none;margin:0 -12px;padding:8px 12px 0;display:flex;flex-direction:column;max-height:680px;overflow-y:auto;overscroll-behavior:contain}
+.lines li{padding:12px 12px;margin:0 -12px;border-radius:10px;transition:background .4s, opacity .4s}
+.lines li.pending{opacity:.18}
+.lines li.hit{background:var(--orange-wash)}
+.lines .who{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.lines .who b{font-weight:500;color:var(--ink-soft)}
+.lines .say{font-size:17px;line-height:1.45}
+.score-top{display:flex;align-items:center;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+.ring{position:relative;width:118px;height:118px;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .val{position:absolute;inset:0;display:grid;place-items:center;font-size:34px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.score-top h3{font-size:28px}
+.score-top p{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px}
 .cats{list-style:none;margin:0;padding:0}
-.cats li{border-bottom:1px solid var(--line)}
-.cats li:last-child{border-bottom:0}
-.category{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;width:100%;padding:16px 8px;margin:0;border:0;border-radius:4px;background:transparent;text-align:left;color:var(--ink);transition:background .2s}
-.category:hover,.category[aria-pressed="true"]{background:var(--paper)}
-.category[aria-pressed="true"] .nm{color:var(--green)}
-.cats .nm{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.gap{font-size:11px;font-weight:400;color:var(--orange)}
-.category-score{font-size:13px;font-weight:500;color:var(--ink-soft);font-variant-numeric:tabular-nums}
-.cats .ev{grid-column:1 / -1;font-size:13px;line-height:1.55;color:var(--ink-soft)}
-.cats li.pending .ev,.cats li.pending .nm{opacity:.4}
-.console-foot{grid-column:1 / -1;border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 32px;align-items:center;padding:24px;background:var(--paper)}
-.slack{grid-column:1 / -1;min-width:0}
-.recap-label{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;font-size:13px}
-.recap-label strong{font-weight:600}
-.recap-label span{color:var(--ink-soft)}
-.slack p{font-size:14px;line-height:1.65;color:var(--ink-soft);max-width:100ch}
-.console-foot .approve-help{font-size:12px;line-height:1.6;color:var(--ink-soft);padding:0;border:0;max-width:68ch}
-.console-foot .approve-help b{color:var(--ink-soft);font-weight:500}
-.foot-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;align-items:center}
+.cats li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:13px 0;border-bottom:1px solid var(--line)}
+.cats .nm{font-size:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gap{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--orange);color:#000000;padding:3px 8px;border-radius:999px}
+.pips{display:flex;gap:5px;align-items:center}
+.pips i{width:16px;height:8px;border-radius:4px;background:var(--line);transition:background .35s}
+.pips i.on{background:var(--ink)}
+.cats li.is-gap .pips i.on{background:var(--orange)}
+.pips b{font-family:var(--mono);font-weight:500;font-size:13px;width:34px;text-align:right;font-variant-numeric:tabular-nums}
+.cats .ev{grid-column:1 / -1;font-size:15px;font-style:italic;color:var(--ink-soft);min-height:0}
+.cats li.pending .ev{opacity:.0}
+.cats li.pending .nm{opacity:.45}
+.console-foot{grid-column:1 / -1;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:20px 28px;background:var(--paper)}
+.slack{display:flex;gap:12px;align-items:flex-start;min-width:0;flex:1 1 380px}
+.slack .tile{flex:none;width:36px;height:36px;border-radius:9px;background:var(--ink);display:grid;place-items:center}
+.slack .tile svg{width:22px;height:22px}
+.slack small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.slack p{font-size:16px;line-height:1.4}
+.foot-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .btn-ink{background:var(--ink);color:var(--paper)}
 .btn-ink:hover{background:#E6E6E6}
 .btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
-.console #approve{background:var(--green);color:var(--night)}
-.console #approve:hover{background:var(--orange)}
-.console #approve:disabled{opacity:.5;cursor:wait}
-.synced{display:none;align-items:center;gap:8px;font-size:13px;color:var(--green);max-width:250px}
+.synced{display:none;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);background:var(--green-wash);padding:12px 16px;border-radius:999px}
 .console.approved .synced{display:inline-flex}
 .console.approved #approve{display:none}
-.sample{margin-top:14px;font-size:12px;line-height:1.6;color:var(--ink-soft)}
-@media (max-width:900px){.demo .console{grid-template-columns:1fr}.pane + .pane{border-left:0;border-top:1px solid var(--line)}.lines{flex:none;min-height:0;height:480px}}
-@media (max-width:560px){.demo-head{gap:20px}.playbooks{width:100%;gap:28px}.console-bar{padding:14px 18px}.call-title{gap:2px;flex-direction:column}.pane{padding:20px 18px}.console-foot{grid-template-columns:1fr;padding:20px 18px;gap:16px}.foot-actions{justify-content:flex-start}.lines li{grid-template-columns:20px minmax(0,1fr);gap:8px}.score-top{gap:12px}.pane-head{font-size:12px}}
+.sample{margin-top:14px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-soft)}
+@media (max-width:900px){.console{grid-template-columns:1fr}.pane + .pane{border-left:0;border-top:1px solid var(--line)}}
 
 /* ---------- how ---------- */
 .how{background:var(--paper-2);padding-block:120px}
@@ -497,7 +478,7 @@ footer{background:#000000}
     <div class="demo-head">
       <div>
         <span class="eyebrow">Try it</span>
-        <h2>A discovery call, scored.</h2>
+        <h2>Watch a discovery call <em>get scored.</em></h2>
       </div>
       <div class="playbooks" role="group" aria-label="Playbook">
         <button type="button" data-pb="MEDDIC" aria-pressed="true">MEDDIC</button>
@@ -506,40 +487,38 @@ footer{background:#000000}
       </div>
     </div>
     <div class="console" id="console">
-      <div class="console-bar">
-        <div class="call-title"><strong>Northwind</strong><span>Discovery call · 18 exchanges</span></div>
-        <button class="btn replay" type="button" id="replay">Replay scoring</button>
-      </div>
-      <div class="pane transcript-pane">
-        <div class="pane-head"><strong>Transcript</strong><span>Gong · sample call</span></div>
+      <div class="pane">
+        <div class="pane-head"><span>Gong transcript · sample call</span><span class="live"><i></i><span id="live-label">Processed</span></span></div>
         <ol class="lines" id="lines" tabindex="0" aria-label="Northwind discovery call transcript"></ol>
       </div>
       <div class="pane">
-        <div class="pane-head"><strong>Scorecard</strong><span class="live"><i aria-hidden="true"></i><span id="live-label" role="status">Processed</span></span></div>
+        <div class="pane-head"><span>Deal readiness</span><span id="pb-label">MEDDIC · scored 1–5</span></div>
         <div class="score-top">
+          <div class="ring" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#2A2A2A" stroke-width="10"/><circle id="ring-fg" cx="60" cy="60" r="52" fill="none" stroke="#1DB954" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg>
+            <span class="val" id="ring-val">0%</span>
+          </div>
           <div>
-            <small id="pb-label">MEDDIC · scored 1–5</small>
+            <h3>Northwind</h3>
             <p id="gap-line">Discovery call · shipment exceptions</p>
           </div>
-          <span class="score-value" id="score-value">0%</span>
         </div>
-        <div class="score-meter" id="score-meter" role="meter" aria-label="Illustrative deal readiness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="score-fill"></span></div>
-        <p class="evidence-help">Select a category to find its evidence in the transcript.</p>
         <ul class="cats" id="cats"></ul>
       </div>
       <div class="console-foot">
+        <p class="approve-help"><b>What happens when you approve:</b> nothing leaves Callify until the rep checks it. One click posts this recap to #sales-team in Slack and writes the score, notes and next step to the deal in HubSpot.</p>
         <div class="slack">
-          <div class="recap-label"><strong>Draft recap</strong><span>#sales-team</span></div>
-          <p id="recap">Northwind has quantified the workload, named the budget owner and defined pilot targets. Pilot results and approvals are pending. Next step: Dana sends the security package; Alex sends sample records and the IT introduction by October 30.</p>
+          <span class="tile"><svg viewBox="0 0 22 22" aria-hidden="true"><rect x="3" y="8" width="3" height="7" rx="1.5" fill="#1DB954"/><rect x="8" y="4" width="3" height="14" rx="1.5" fill="#1DB954"/><rect x="13" y="6" width="3" height="10" rx="1.5" fill="#1DB954"/><rect x="18" y="9" width="3" height="5" rx="1.5" fill="#1DB954"/></svg></span>
+          <div><small>Draft for #sales-team · waiting on you</small><p id="recap">Northwind has quantified the workload, named the budget owner and defined pilot targets. Pilot results and approvals are pending. Next step: Dana sends the security package; Alex sends sample records and the IT introduction by October 30.</p></div>
         </div>
-        <p class="approve-help"><b>Review before sending.</b> In Callify, approval posts the recap to Slack and writes the score, notes and next step to HubSpot. This demo doesn’t send anything.</p>
         <div class="foot-actions">
-          <button class="btn" type="button" id="approve">Preview approval</button>
-          <span class="synced" role="status" tabindex="-1">Preview complete. Recap and deal update ready.</span>
+          <button class="btn btn-line" type="button" id="replay">▶ Replay call</button>
+          <button class="btn btn-ink" type="button" id="approve">Approve &amp; send</button>
+          <span class="synced" role="status"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Recap posted · HubSpot deal updated</span>
         </div>
       </div>
     </div>
-    <p class="sample">Illustrative scores for a fictional call. Northwind, Dana, Alex and Maya are made-up names.</p>
+    <p class="sample">Sample call. Northwind, Dana, Alex and Maya are made-up names.</p>
   </div>
 </section>
 
@@ -684,7 +663,7 @@ footer{background:#000000}
     }, 140);
   }
   const io = 'IntersectionObserver' in window ? new IntersectionObserver(es=>{
-    es.forEach(e=>{ if(e.isIntersecting){ if(e.target.id==='checks') runChecks(); io.unobserve(e.target); } });
+    es.forEach(e=>{ if(e.isIntersecting){ if(e.target.id==='checks') runChecks(); if(e.target.id==='console' && !demoStarted){ demoStarted = true; run(); } io.unobserve(e.target); } });
   },{threshold:.35}) : null;
   if (io) io.observe(document.getElementById('checks')); else runChecks();
 
@@ -771,49 +750,47 @@ footer{background:#000000}
       ['Timeline',4,11,'Target signature: Nov 19, before Nov 20 staffing planning. Pilot, security, procurement and legal are still pending.']
     ], recap:'Northwind is at {p}% readiness. The $48,000 allocation covers the $42,000 first-year quote, and Maya has authority to approve. Purchase awaits pilot results and security clearance; target signature is November 19, with procurement and legal still pending. Next step: sample records and IT introduction by October 30.'}
   };
-  let pb = 'MEDDIC', timers = [];
+  let pb = 'MEDDIC', timers = [], demoStarted = false;
   const linesEl = document.getElementById('lines'), catsEl = document.getElementById('cats');
-  const scoreFill = document.getElementById('score-fill'), scoreValue = document.getElementById('score-value');
-  const scoreMeter = document.getElementById('score-meter');
+  const ringFg = document.getElementById('ring-fg'), ringVal = document.getElementById('ring-val');
   const consoleEl = document.getElementById('console');
+  const CIRC = 326.7;
   function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
   function readiness(cats){ const s=cats.reduce((a,c)=>a+c[1],0); return Math.round(s/(cats.length*5)*100); }
-  function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
   function render(){
     const d = PB[pb];
     document.getElementById('pb-label').textContent = d.label;
-    linesEl.innerHTML = LINES.map((l,i)=>'<li id="exchange-'+(i+1)+'" tabindex="-1" class="pending'+(l[0]==='Dana'?' question':'')+'"><span class="line-number" aria-hidden="true">'+String(i+1).padStart(2,'0')+'</span><div><div class="who"><b>'+esc(l[0])+'</b></div><div class="say">'+esc(l[1])+'</div></div></li>').join('');
+    linesEl.innerHTML = LINES.map(l=>'<li class="pending"><div class="who"><b>'+esc(l[0])+'</b></div><div class="say">'+esc(l[1])+'</div></li>').join('');
     linesEl.scrollTop = 0;
-    catsEl.innerHTML = d.cats.map(c=>'<li class="pending"><button class="category" type="button" data-line="'+c[2]+'" aria-controls="exchange-'+(c[2]+1)+'" aria-pressed="false"><span class="nm">'+esc(c[0])+(c[1]<=2?' <span class="gap">Gap</span>':'')+'</span><span class="category-score">– / 5</span><span class="ev">'+esc(c[3])+'</span></button></li>').join('');
+    catsEl.innerHTML = d.cats.map(c=>'<li class="pending'+(c[1]<=2?' is-gap':'')+'"><span class="nm">'+esc(c[0])+(c[1]<=2?' <span class="gap">Gap</span>':'')+'</span><span class="pips">'+'<i></i>'.repeat(5)+'<b>–</b></span><span class="ev">'+esc(c[3])+'</span></li>').join('');
   }
-  function setScore(p){ scoreFill.style.width = p+'%'; scoreValue.textContent = p+'%'; scoreMeter.setAttribute('aria-valuenow', p); }
+  function setRing(p){ ringFg.style.strokeDashoffset = CIRC*(1-p/100); ringVal.textContent = p+'%'; }
   function revealCat(i){
     const c = PB[pb].cats[i], li = catsEl.children[i];
     li.classList.remove('pending');
-    li.querySelector('.category-score').textContent = c[1]+' / 5';
+    li.querySelectorAll('.pips i').forEach((p,k)=>p.classList.toggle('on', k<c[1]));
+    li.querySelector('.pips b').textContent = c[1]+'/5';
   }
   function finish(){
     const d = PB[pb], p = readiness(d.cats);
     LINES.forEach((_,i)=>linesEl.children[i].classList.remove('pending'));
     d.cats.forEach((_,i)=>revealCat(i));
-    setScore(p);
+    setRing(p);
     const gaps = d.cats.filter(c=>c[1]<=2).map(c=>c[0].toLowerCase());
     document.getElementById('gap-line').textContent = gaps.length ? 'Gap: '+gaps.join(', ') : 'Pilot and approvals pending';
     document.getElementById('recap').textContent = d.recap.replace('{p}', p);
     consoleEl.classList.remove('running');
     document.getElementById('live-label').textContent = 'Processed';
-    document.getElementById('approve').disabled = false;
   }
   function run(){
-    clearTimers();
+    timers.forEach(clearTimeout); timers = [];
     consoleEl.classList.remove('approved');
-    render(); setScore(0);
+    render(); setRing(0);
     document.getElementById('gap-line').textContent = 'Discovery call · shipment exceptions';
     document.getElementById('recap').textContent = 'Drafting the recap…';
     if (reduce){ finish(); return; }
     consoleEl.classList.add('running');
     document.getElementById('live-label').textContent = 'Scoring';
-    document.getElementById('approve').disabled = true;
     const d = PB[pb];
     LINES.forEach((_,i)=>{
       timers.push(setTimeout(()=>{
@@ -823,38 +800,23 @@ footer{background:#000000}
         if (hits.length){ li.classList.add('hit'); timers.push(setTimeout(()=>li.classList.remove('hit'), 900)); }
         hits.forEach(revealCat);
         const shown = d.cats.filter(c=>c[2]<=i);
-        if (shown.length) setScore(Math.round(shown.reduce((a,c)=>a+c[1],0)/(d.cats.length*5)*100));
+        if (shown.length) setRing(Math.round(shown.reduce((a,c)=>a+c[1],0)/(d.cats.length*5)*100));
       }, 450 + i*520));
     });
     timers.push(setTimeout(finish, 450 + LINES.length*520 + 200));
   }
-  catsEl.addEventListener('click', e=>{
-    const button = e.target.closest('button[data-line]');
-    if (!button) return;
-    clearTimers();
-    finish();
-    catsEl.querySelectorAll('.category').forEach(b=>b.setAttribute('aria-pressed', b===button));
-    const target = linesEl.children[Number(button.dataset.line)];
-    [...linesEl.children].forEach(line=>line.classList.toggle('selected', line===target));
-    target.focus({preventScroll:true});
-    target.scrollIntoView({behavior:reduce?'instant':'smooth',block:'nearest'});
-  });
-  document.querySelectorAll('.playbooks button').forEach(b=>b.addEventListener('click', ()=>selectPlaybook(b.dataset.pb, false)));
+  document.querySelectorAll('.playbooks button').forEach(b=>b.addEventListener('click', ()=>selectPlaybook(b.dataset.pb, true)));
   function selectPlaybook(name, play){
     if (!PB[name]) return;
-    clearTimers();
-    consoleEl.classList.remove('approved');
     pb = name;
     document.querySelectorAll('.playbooks button').forEach(x=>x.setAttribute('aria-pressed', x.dataset.pb===name));
     if (play) run(); else { render(); finish(); }
   }
   document.getElementById('replay').addEventListener('click', run);
-  document.getElementById('approve').addEventListener('click', ()=>{
-    consoleEl.classList.add('approved');
-    consoleEl.querySelector('.synced').focus();
-  });
-  // Keep the call readable at rest; scoring animation is an explicit action.
+  document.getElementById('approve').addEventListener('click', ()=>consoleEl.classList.add('approved'));
+  // complete at rest, then animate once when scrolled into view
   render(); finish();
+  if (io) io.observe(consoleEl);
 
   /* ---------- CTA picker ---------- */
   const msg = document.getElementById('cta-msg');
@@ -866,7 +828,7 @@ footer{background:#000000}
       : 'Callify scores against <b>'+n+'</b>, using the logic your team already trusts.';
     if (PB[n]) selectPlaybook(n, false);
   }));
-  document.getElementById('cta-try').addEventListener('click', ()=>document.getElementById('replay').focus({preventScroll:true}));
+  document.getElementById('cta-try').addEventListener('click', ()=>{ demoStarted = true; setTimeout(run, 500); });
 })();
 </script>
 
