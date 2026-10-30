@@ -167,7 +167,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 .lines{list-style:none;margin:0 -12px;padding:8px 12px 0;display:flex;flex-direction:column;max-height:680px;overflow-y:auto;overscroll-behavior:contain}
 .lines li{padding:12px 12px;margin:0 -12px;border-radius:10px;transition:background .4s, opacity .4s}
 .lines li.pending{opacity:.18}
-.lines li.hit{background:var(--orange-wash)}
+.lines li.hit,.lines li.speaking{background:var(--orange-wash)}
 .lines .who{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .lines .who b{font-weight:500;color:var(--ink-soft)}
 .lines .say{font-size:17px;line-height:1.45}
@@ -742,13 +742,35 @@ footer{background:#000000}
       ['Timeline',4,7,'Target signature: Nov 19. Pilot and reviews pending; staffing closes Nov 20.']
     ], recap:'Northwind is at {p}% readiness. Budget covers the quote; Maya can approve. Pilot and security clearance are pending. Target signature: Nov 19.'}
   };
-  let pb = 'MEDDIC', timers = [], demoStarted = false;
+  let pb = 'MEDDIC', timers = [], demoStarted = false, scrollFrame = null;
   const linesEl = document.getElementById('lines'), catsEl = document.getElementById('cats');
   const ringFg = document.getElementById('ring-fg'), ringVal = document.getElementById('ring-val');
   const consoleEl = document.getElementById('console');
   const CIRC = 326.7;
   function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
   function readiness(cats){ const s=cats.reduce((a,c)=>a+c[1],0); return Math.round(s/(cats.length*5)*100); }
+  function stopPlayback(){
+    timers.forEach(clearTimeout); timers = [];
+    cancelAnimationFrame(scrollFrame); scrollFrame = null;
+  }
+  function followLine(li){
+    cancelAnimationFrame(scrollFrame); scrollFrame = null;
+    const start = linesEl.scrollTop;
+    const inset = Math.max(24, (linesEl.clientHeight-li.offsetHeight)/3);
+    const top = li.getBoundingClientRect().top-linesEl.getBoundingClientRect().top+start-inset;
+    const target = Math.max(0, Math.min(top, linesEl.scrollHeight-linesEl.clientHeight));
+    if (reduce){ linesEl.scrollTop = target; return; }
+    if (Math.abs(target-start)<1) return;
+    const started = performance.now();
+    const duration = 1200;
+    function step(now){
+      const progress = Math.min(1, (now-started)/duration);
+      const eased = progress*progress*(3-2*progress);
+      linesEl.scrollTop = start+(target-start)*eased;
+      scrollFrame = progress<1 ? requestAnimationFrame(step) : null;
+    }
+    scrollFrame = requestAnimationFrame(step);
+  }
   function render(){
     const d = PB[pb];
     document.getElementById('pb-label').textContent = d.label;
@@ -765,7 +787,7 @@ footer{background:#000000}
   }
   function finish(){
     const d = PB[pb], p = readiness(d.cats);
-    LINES.forEach((_,i)=>linesEl.children[i].classList.remove('pending'));
+    LINES.forEach((_,i)=>linesEl.children[i].classList.remove('pending','speaking'));
     d.cats.forEach((_,i)=>revealCat(i));
     setRing(p);
     const gaps = d.cats.filter(c=>c[1]<=2).map(c=>c[0].toLowerCase());
@@ -775,7 +797,7 @@ footer{background:#000000}
     document.getElementById('live-label').textContent = 'Processed';
   }
   function run(){
-    timers.forEach(clearTimeout); timers = [];
+    stopPlayback();
     consoleEl.classList.remove('approved');
     render(); setRing(0);
     document.getElementById('gap-line').textContent = 'Discovery call · shipment exceptions';
@@ -784,22 +806,29 @@ footer{background:#000000}
     consoleEl.classList.add('running');
     document.getElementById('live-label').textContent = 'Scoring';
     const d = PB[pb];
-    LINES.forEach((_,i)=>{
+    let nextLineAt = 450;
+    LINES.forEach((line,i)=>{
       timers.push(setTimeout(()=>{
         const li = linesEl.children[i];
+        if (i>0) linesEl.children[i-1].classList.remove('speaking');
         li.classList.remove('pending');
+        li.classList.add('speaking');
+        followLine(li);
         const hits = d.cats.map((c,ci)=>c[2]===i?ci:-1).filter(x=>x>=0);
         if (hits.length){ li.classList.add('hit'); timers.push(setTimeout(()=>li.classList.remove('hit'), 900)); }
         hits.forEach(revealCat);
         const shown = d.cats.filter(c=>c[2]<=i);
         if (shown.length) setRing(Math.round(shown.reduce((a,c)=>a+c[1],0)/(d.cats.length*5)*100));
-      }, 450 + i*520));
+      }, nextLineAt));
+      nextLineAt += Math.max(1800, Math.min(10000, line[1].split(/\s+/).length*230));
     });
-    timers.push(setTimeout(finish, 450 + LINES.length*520 + 200));
+    timers.push(setTimeout(finish, nextLineAt+200));
   }
   document.querySelectorAll('.playbooks button').forEach(b=>b.addEventListener('click', ()=>selectPlaybook(b.dataset.pb, true)));
   function selectPlaybook(name, play){
     if (!PB[name]) return;
+    stopPlayback();
+    consoleEl.classList.remove('approved');
     pb = name;
     document.querySelectorAll('.playbooks button').forEach(x=>x.setAttribute('aria-pressed', x.dataset.pb===name));
     if (play) run(); else { render(); finish(); }
