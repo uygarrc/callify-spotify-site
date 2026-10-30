@@ -509,7 +509,7 @@ footer{background:#000000}
         <p class="approve-help"><b>What happens when you approve:</b> nothing leaves Callify until the rep checks it. One click posts this recap to #sales-team in Slack and writes the score, notes and next step to the deal in HubSpot.</p>
         <div class="slack">
           <span class="tile"><svg viewBox="0 0 22 22" aria-hidden="true"><rect x="3" y="8" width="3" height="7" rx="1.5" fill="#1DB954"/><rect x="8" y="4" width="3" height="14" rx="1.5" fill="#1DB954"/><rect x="13" y="6" width="3" height="10" rx="1.5" fill="#1DB954"/><rect x="18" y="9" width="3" height="5" rx="1.5" fill="#1DB954"/></svg></span>
-          <div><small>Draft for #sales-team · waiting on you</small><p id="recap">Northwind has quantified the workload, named the budget owner and defined pilot targets. Pilot results and approvals are pending. Next step: Dana sends the security package; Alex sends sample records and the IT introduction by October 30.</p></div>
+          <div><small>Draft for #sales-team · waiting on you</small><p id="recap">Northwind has budget and a named approver. Pilot results and security clearance are pending. Next: Alex sends records and an IT introduction by Oct 30.</p></div>
         </div>
         <div class="foot-actions">
           <button class="btn btn-line" type="button" id="replay">▶ Replay call</button>
@@ -707,48 +707,40 @@ footer{background:#000000}
 
   /* ---------- demo ---------- */
   const LINES = [
-    ['Dana','What happens today when a shipment gets flagged?'],
-    ['Alex · Northwind',"A coordinator copies the carrier alert into a spreadsheet, asks the warehouse in Slack, then emails the customer. We handled 18,000 shipments in September; 1,260 had exceptions. That's 7%. Median resolution time was 46 hours, mostly waiting for updates."],
-    ['Dana','How much of that is actual work, rather than waiting?'],
-    ['Alex · Northwind',"Our task logs average 12 minutes of active work per exception. Across September's 1,260 exceptions, that's 252 staff-hours. Finance uses $40 an hour fully loaded, so about $10,080 of staff capacity. Those employees stay on payroll; it's not cash we automatically save."],
-    ['Dana','What would a useful improvement look like?'],
-    ['Alex · Northwind',"We'd want median resolution below 12 hours and active handling below six minutes. For the pilot, at least 49 of 50 test exceptions must reach the correct warehouse queue without manual reassignment. Maya approved those targets, but we haven't tested them yet."],
-    ['Dana','Our quote is $36,000 annually plus $6,000 for setup. Who approves that $42,000 first-year cost?'],
-    ['Maya · Northwind',"I do. I own the operations budget and can approve up to $50,000 without the CFO. We've allocated $48,000 for this project. That covers your quote, but I still need the pilot results and security clearance before approving the purchase."],
-    ['Dana','What requirements could rule a product out?'],
-    ['Alex · Northwind','SSO, an audit log showing who changed each shipment, and integration with our order system. We also need access restricted by warehouse. Those are requirements from operations and IT, not just my preferences.'],
-    ['Dana','What does approval look like, and why the November timing?'],
-    ['Maya · Northwind',"Security has booked October 29 through November 11. Procurement then needs a week, with legal reviewing in parallel. We're targeting signature November 19. Q1 staffing planning closes November 20; without an approved replacement plan, we'll budget $28,000 for two temporary coordinators. The reviews haven't passed yet."],
-    ['Dana','Are you considering other options?'],
-    ['Alex · Northwind',"Our carrier offers an add-on for $24,000 annually, but we haven't confirmed whether it includes the audit log. We could also keep the spreadsheet and hire the temporary staff. We haven't selected a vendor."],
-    ['Dana','Who else is involved in the pilot?'],
-    ['Alex · Northwind',"I presented the exception analysis to all three warehouse managers; two committed coordinators for the November 2–6 pilot. It will use anonymized shipment records in a sandbox while security reviews production access. I'll present the results to Maya on November 9."],
-    ['Dana',"I'll send the security package today. Can you send the sample records and introduce our technical lead to IT by October 30?"],
-    ['Alex · Northwind',"Yes. I'll send both by Friday and include the two warehouse managers on the pilot kickoff."]
+    ['Dana','How do you handle shipment exceptions?'],
+    ['Alex · Northwind','Spreadsheet, Slack, then email. September had 1,260 exceptions (7% of shipments), with a 46-hour median resolution. Active work was 12 minutes each: 252 staff-hours, not automatic cash savings.'],
+    ['Dana','What would success look like?'],
+    ['Alex · Northwind','Median resolution under 12 hours, handling under six minutes, and 49/50 routed correctly. Maya approved these untested targets. We need SSO, shipment audit logs, order-system integration and warehouse access controls.'],
+    ['Dana','Who approves our $42,000 first-year quote?'],
+    ['Maya · Northwind','I own the budget: $48,000 allocated, $50,000 approval authority. Purchase still needs pilot results and security clearance.'],
+    ['Dana',"What's the approval timeline?"],
+    ['Maya · Northwind',"Security: Oct 29–Nov 11, then a week for procurement, with legal in parallel. Target signature: Nov 19. Staffing closes Nov 20; otherwise we'll budget $28,000 for temporary staff. Reviews are pending."],
+    ['Dana',"I'll send security documents today. What are the alternatives and next steps?"],
+    ['Alex · Northwind',"No vendor selected. The carrier's $24,000/year add-on has an unconfirmed audit log; keeping the spreadsheet is another option. Two warehouse managers committed staff for our Nov 2–6 sandbox pilot. I'll send records and an IT introduction by Oct 30, then results to Maya Nov 9."]
   ];
   const PB = {
     MEDDIC: { label:'MEDDIC · scored 1–5', cats:[
-      ['Metrics',5,3,'1,260 exceptions × 12 minutes = 252 staff-hours; $10,080 in staff capacity, not automatic cash savings.'],
-      ['Economic buyer',5,7,'Maya owns the budget and can approve up to $50,000. Purchase depends on pilot results and security clearance.'],
-      ['Decision criteria',4,9,'SSO, shipment audit log, order-system integration and warehouse access controls. Pilot targets are agreed but untested.'],
-      ['Decision process',4,11,'Security: Oct 29–Nov 11; procurement: one week; legal in parallel. Reviews have not passed.'],
-      ['Identify pain',5,1,'7% of September shipments had exceptions; median resolution was 46 hours, mostly waiting for updates.'],
-      ['Champion',4,15,'Alex presented to all three warehouse managers and secured pilot support from two. Results go to Maya Nov 9.'],
-      ['Critical event',5,11,'Q1 staffing planning closes Nov 20; without an approved replacement plan, Northwind will budget $28,000 for temporary staff.']
-    ], recap:'Northwind is at {p}% readiness. Workload and buyer are confirmed; pilot targets are untested and approvals are pending. No vendor selected. Next step: Dana sends the security package; Alex sends sample records and the IT introduction by October 30.'},
+      ['Metrics',5,1,'1,260 exceptions × 12 minutes = 252 staff-hours, not automatic cash savings.'],
+      ['Economic buyer',5,5,'Maya owns the budget with $50,000 approval authority. Pilot and security clearance pending.'],
+      ['Decision criteria',4,3,'SSO, audit logs, order-system integration and warehouse access controls. Pilot targets untested.'],
+      ['Decision process',4,7,'Security: Oct 29–Nov 11, then procurement; legal in parallel. Reviews pending.'],
+      ['Identify pain',5,1,'7% of September shipments had exceptions; median resolution: 46 hours.'],
+      ['Champion',4,9,'Two warehouse managers committed pilot staff. Alex presents results to Maya Nov 9.'],
+      ['Critical event',5,7,'Nov 20 staffing deadline; otherwise $28,000 budgeted for temporary staff.']
+    ], recap:'Northwind is at {p}% readiness. Budget and buyer confirmed; pilot and approvals pending. Next: Alex sends records and an IT introduction by Oct 30.'},
     SPICED: { label:'SPICED · scored 1–5', cats:[
-      ['Situation',5,1,'18,000 September shipments; 1,260 exceptions handled through a spreadsheet, Slack and email.'],
-      ['Pain',5,1,'Median resolution takes 46 hours, mostly waiting for updates.'],
-      ['Impact',4,5,'252 staff-hours in September. Targets: resolution under 12 hours, handling under six minutes and 49/50 correctly routed; untested.'],
-      ['Critical event',5,11,'Nov 20 staffing deadline; $28,000 in temporary staffing will be budgeted without an approved replacement plan.'],
-      ['Decision',4,13,'Maya approves after pilot and security clearance. Carrier add-on: $24,000/year, audit log unconfirmed; spreadsheet plus temporary staff is another option.']
-    ], recap:'Northwind is at {p}% readiness. The workload and November 20 deadline are clear. Staff capacity is not automatic cash savings; improvement targets remain untested. No vendor selected. Next step: sample records and IT introduction by October 30, then the November 2–6 sandbox pilot.'},
+      ['Situation',5,1,'1,260 September exceptions handled through a spreadsheet, Slack and email.'],
+      ['Pain',5,1,'46-hour median resolution; 12 minutes of active work per exception.'],
+      ['Impact',4,3,'Targets: resolution under 12 hours, handling under six minutes, 49/50 correctly routed. Untested.'],
+      ['Critical event',5,7,'Nov 20 staffing deadline; otherwise $28,000 budgeted for temporary staff.'],
+      ['Decision',4,9,'No vendor selected. Carrier add-on: $24,000/year, audit log unconfirmed; spreadsheet is another option.']
+    ], recap:'Northwind is at {p}% readiness. Workload and deadline are clear; improvement targets remain untested. Next: records and IT introduction by Oct 30, sandbox pilot Nov 2–6.'},
     BANT: { label:'BANT · scored 1–5', cats:[
-      ['Budget',5,7,'$48,000 allocated covers the $42,000 first year: $36,000 annually plus $6,000 setup. Purchase not yet approved.'],
-      ['Authority',5,7,'Maya owns operations budget with approval authority up to $50,000 without the CFO.'],
-      ['Need',5,3,'1,260 monthly exceptions consume 252 staff-hours; $10,080 of capacity, not automatic cash savings.'],
-      ['Timeline',4,11,'Target signature: Nov 19, before Nov 20 staffing planning. Pilot, security, procurement and legal are still pending.']
-    ], recap:'Northwind is at {p}% readiness. The $48,000 allocation covers the $42,000 first-year quote, and Maya has authority to approve. Purchase awaits pilot results and security clearance; target signature is November 19, with procurement and legal still pending. Next step: sample records and IT introduction by October 30.'}
+      ['Budget',5,5,'$48,000 allocated covers the $42,000 first-year quote. Purchase not yet approved.'],
+      ['Authority',5,5,'Maya owns the budget with $50,000 approval authority.'],
+      ['Need',5,1,'September exceptions consumed 252 staff-hours, not automatic cash savings.'],
+      ['Timeline',4,7,'Target signature: Nov 19. Pilot and reviews pending; staffing closes Nov 20.']
+    ], recap:'Northwind is at {p}% readiness. Budget covers the quote; Maya can approve. Pilot and security clearance are pending. Target signature: Nov 19.'}
   };
   let pb = 'MEDDIC', timers = [], demoStarted = false;
   const linesEl = document.getElementById('lines'), catsEl = document.getElementById('cats');
