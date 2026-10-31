@@ -511,7 +511,7 @@ footer{background:#000000}
         <p class="approve-help"><b>What happens when you approve:</b> nothing leaves Callify until the rep checks it. One click posts this recap to #sales-team in Slack and writes the score, notes and next step to the deal in HubSpot.</p>
         <div class="slack">
           <span class="tile"><svg viewBox="0 0 22 22" aria-hidden="true"><rect x="3" y="8" width="3" height="7" rx="1.5" fill="#1DB954"/><rect x="8" y="4" width="3" height="14" rx="1.5" fill="#1DB954"/><rect x="13" y="6" width="3" height="10" rx="1.5" fill="#1DB954"/><rect x="18" y="9" width="3" height="5" rx="1.5" fill="#1DB954"/></svg></span>
-          <div><small>Draft for #sales-team · waiting on you</small><p id="recap">Northwind has money set aside, and Maya can approve the purchase. Tests and reviews still need to pass. Next: Alex sends sample records and connects us with IT by Oct 30.</p></div>
+          <div><small>Draft for #sales-team · waiting on you</small><p id="recap">Northwind has money set aside, but no one has been named to approve the purchase. Next: Maya checks with finance. Tests and reviews still need to pass.</p></div>
         </div>
         <div class="foot-actions">
           <button class="btn btn-line" type="button" id="replay">▶ Replay call</button>
@@ -714,7 +714,7 @@ footer{background:#000000}
     ['Dana','What would make that better?'],
     ['Alex · Northwind',"Bring that down to under 12 hours, with under six minutes of staff time per problem. In our test, 49 of 50 cases must reach the right warehouse. We also need company sign-in, a record of who changed each shipment, links to our order system, and access limited by warehouse. Maya agreed, but we haven't tested it yet."],
     ['Dana','Who can approve our $42,000 first-year price?'],
-    ['Maya · Northwind',"I can approve up to $50,000. We've set aside $48,000. But I need the test results and our security team's approval before buying."],
+    ['Maya · Northwind',"We've set aside $48,000, but I don't know who can give final approval for the purchase. I'll check with finance. Tests and security reviews still need to pass."],
     ['Dana','When do you need to decide?'],
     ['Maya · Northwind',"Security checks run Oct 29–Nov 11. Our buying team then needs a week, while legal reviews the contract. We hope to sign Nov 19. Staffing plans close Nov 20; otherwise we'll budget $28,000 for temporary staff. The reviews aren't finished."],
     ['Dana',"I'll send the security documents today. What happens next?"],
@@ -723,26 +723,26 @@ footer{background:#000000}
   const PB = {
     MEDDIC: { label:'MEDDIC · scored 1–5', cats:[
       ['Metrics',5,1,'1,260 shipment problems took 252 hours of staff time. Saving time does not automatically cut payroll.'],
-      ['Economic buyer',5,5,'Maya can approve up to $50,000, after tests and security checks pass.'],
+      ['Economic buyer',1,5,'No one has been named to approve the purchase. Maya needs to check with finance.'],
       ['Decision criteria',4,3,'Company sign-in, a record of changes, links to the order system, and access limited by warehouse. Still to test.'],
       ['Decision process',4,7,'Security checks, then a week for the buying team, with legal reviewing at the same time. Not yet finished.'],
       ['Identify pain',5,1,'7% of September shipments had problems. Half took at least 46 hours to fix.'],
       ['Champion',4,9,'Two warehouse managers offered staff for the trial. Alex shares results with Maya Nov 9.'],
       ['Critical event',5,7,'Staffing plans close Nov 20. Without a replacement, $28,000 goes into the plan for temporary staff.']
-    ], recap:'Northwind scores {p}%. Money is set aside, and Maya can approve. Tests and reviews still need to pass. Next: Alex sends sample records and connects us with IT by Oct 30.'},
+    ], recap:'Northwind scores {p}%. Money is set aside. Gap: no one has been named to approve the purchase. Next: Maya checks with finance. Tests and reviews still need to pass.'},
     SPICED: { label:'SPICED · scored 1–5', cats:[
       ['Situation',5,1,'Shipment problems are tracked in a spreadsheet, Slack and email.'],
       ['Pain',5,1,'Half took at least 46 hours to fix, with 12 minutes of staff work each.'],
       ['Impact',4,3,'Goal: fix problems sooner, spend under six minutes on each, and send 49 of 50 test cases to the right warehouse. Not yet tested.'],
       ['Critical event',5,7,'Staffing plans close Nov 20. Without a replacement, $28,000 goes into the plan for temporary staff.'],
-      ['Decision',4,9,'Still choosing. The carrier offers a $24,000/year option; its change history is unconfirmed. Keeping the spreadsheet is another option.']
-    ], recap:'Northwind scores {p}%. The problem and deadline are clear. The improvements still need testing. Next: sample records and an IT introduction by Oct 30, then a Nov 2–6 trial.'},
+      ['Decision',2,5,'The final approver is unknown. Maya will ask finance who can sign off.']
+    ], recap:'Northwind scores {p}%. The problem and deadline are clear. Gap: who can approve the purchase? Next: Maya asks finance. The improvements still need testing.'},
     BANT: { label:'BANT · scored 1–5', cats:[
       ['Budget',5,5,'$48,000 is set aside for a $42,000 first-year price. The purchase is not yet approved.'],
-      ['Authority',5,5,'Maya can approve purchases up to $50,000.'],
+      ['Authority',1,5,'Maya has not confirmed who can sign off on the purchase.'],
       ['Need',5,1,'Shipment problems took 252 hours of staff time in September. Less work would not automatically cut payroll.'],
       ['Timeline',4,7,'Hoping to sign Nov 19, before staffing plans close Nov 20. Tests and reviews still need to pass.']
-    ], recap:'Northwind scores {p}%. There is enough money set aside, and Maya can approve. Tests and security checks still need to pass. They hope to sign Nov 19.'}
+    ], recap:'Northwind scores {p}%. There is enough money set aside. Gap: the final approver is unknown. Next: Maya checks with finance. Tests and security checks still need to pass.'}
   };
   let pb = 'MEDDIC', timers = [], demoStarted = false, scrollFrame = null;
   const linesEl = document.getElementById('lines'), catsEl = document.getElementById('cats');
