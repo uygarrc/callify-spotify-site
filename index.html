@@ -105,38 +105,40 @@ button{font:inherit;cursor:pointer}
 
 /* ---------- multiply / calculator ---------- */
 .multiply{border-top:1px solid var(--night-line)}
-.mult-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;padding-block:112px;align-items:start}
-.multiply h2{font-size:clamp(34px,3.8vw,52px);margin-top:18px}
-.big{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 18px;margin-top:36px}
-.big .num{font-size:clamp(110px,16vw,220px);line-height:.9;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
-.big .unit{font-size:clamp(40px,5vw,72px);font-style:italic;color:var(--amber);letter-spacing:-.02em}
-.kicker{margin-top:18px;font-size:22px;color:var(--dim);max-width:40ch}
+.mult-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;padding-block:clamp(24px,4vh,40px);align-items:center}
+.multiply h2{font-size:clamp(26px,2.7vw,36px);margin-top:12px}
+.big{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin-top:18px}
+.big .num{font-size:clamp(72px,8vw,112px);line-height:.9;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.big .unit{font-size:clamp(24px,2.4vw,32px);font-style:italic;color:var(--amber);letter-spacing:-.02em}
+.kicker{margin-top:12px;font-size:17px;line-height:1.45;color:var(--dim);max-width:44ch}
 .kicker b{color:#FFFFFF;font-weight:500}
-.controls{display:flex;flex-direction:column;gap:26px;margin-top:40px;max-width:560px}
-.ctl label{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-.ctl output{font-size:20px;color:#FFFFFF;letter-spacing:0;font-variant-numeric:tabular-nums}
+.controls{display:flex;flex-direction:column;gap:10px;margin-top:22px;max-width:560px}
+.ctl label{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.ctl output{font-size:18px;color:#FFFFFF;letter-spacing:0;font-variant-numeric:tabular-nums}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin-top:8px}
+.multiply input[type=range]{height:24px;margin-top:4px}
 input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(to right,var(--orange) 0 var(--p,50%),#4D4D4D var(--p,50%) 100%)}
 input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:#4D4D4D}
 input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--orange)}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--amber);margin-top:-9px;box-shadow:0 0 0 6px rgba(29,185,84,.22)}
 input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:50%;background:var(--amber);box-shadow:0 0 0 6px rgba(29,185,84,.22)}
-.week{background:var(--night-2);border-radius:20px;padding:28px;box-shadow:inset 0 0 0 1px var(--night-line)}
+.week{background:var(--night-2);border-radius:20px;padding:20px;box-shadow:inset 0 0 0 1px var(--night-line)}
 .week-head{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-.days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:20px}
-.day{display:flex;flex-direction:column-reverse;gap:6px}
-.cell{height:34px;border-radius:6px;background:#282828;position:relative;overflow:hidden}
+.days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:16px}
+.day{display:flex;flex-direction:column-reverse;gap:5px}
+.cell{height:22px;border-radius:6px;background:#282828;position:relative;overflow:hidden}
 .cell i{position:absolute;left:0;right:0;bottom:0;background:var(--orange);height:0;transition:height .45s cubic-bezier(.2,.8,.2,1)}
 .day span{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--dim);text-align:center;padding-top:6px}
-.legend{margin-top:20px;display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.legend{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
 .legend span{display:inline-flex;align-items:center;gap:8px}
 .legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
-.compare{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.compare div{border-radius:14px;padding:16px 18px;box-shadow:inset 0 0 0 1px var(--night-line)}
+.compare{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.compare div{border-radius:14px;padding:12px;box-shadow:inset 0 0 0 1px var(--night-line)}
 .compare small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-.compare strong{display:block;font-weight:400;font-size:30px;margin-top:4px;font-variant-numeric:tabular-nums}
+.compare strong{display:block;font-weight:400;font-size:26px;margin-top:4px;font-variant-numeric:tabular-nums}
 .compare .after strong{color:var(--amber)}
-@media (max-width:900px){.mult-grid{grid-template-columns:1fr;gap:48px;padding-block:80px}}
+@media (min-width:901px) and (max-height:760px){.mult-grid{padding-block:24px}.multiply h2{font-size:32px}.big{margin-top:12px}.big .num{font-size:96px}.controls{margin-top:16px;gap:6px}.kicker{font-size:16px}}
+@media (max-width:900px){.mult-grid{grid-template-columns:1fr;gap:24px;padding-block:32px}}
 
 /* ---------- statement ---------- */
 .statement{padding-block:128px 96px;background:linear-gradient(180deg,var(--night) 0, var(--paper) 1px)}
@@ -394,7 +396,7 @@ footer{background:#000000}
     <div>
       <span class="eyebrow">Now multiply it</span>
       <h2>Small per call. <em>Huge per week.</em></h2>
-      <div class="big"><span class="num" id="hrs">≈5</span><span class="unit">hrs/week</span></div>
+      <div class="big"><span class="num" id="hrs">≈5.0</span><span class="unit">hrs/week</span></div>
       <p class="kicker" id="kicker"><b>25 minutes × 12 calls</b>, every week. That’s more than half a workday.</p>
       <div class="controls">
         <div class="ctl"><label for="calls">Calls per week <output id="calls-out">12</output></label><input type="range" id="calls" min="3" max="40" value="12"></div>
@@ -407,7 +409,7 @@ footer{background:#000000}
       <div class="days" id="days"></div>
       <div class="legend"><span><i style="background:var(--orange)"></i>Post-call admin</span><span><i style="background:#282828"></i>Selling time</span></div>
       <div class="compare">
-        <div><small>Team, today</small><strong id="team-now">5 hrs</strong></div>
+        <div><small>Team, today</small><strong id="team-now">5.0 hrs</strong></div>
         <div class="after"><small>Team, back with Callify</small><strong id="team-back">4.2 hrs</strong></div>
       </div>
     </div>
@@ -674,7 +676,7 @@ footer{background:#000000}
   const calls = document.getElementById('calls'), mins = document.getElementById('mins'), reps = document.getElementById('reps');
   const AFTER_MIN = 4; // review + approve, from the 4:47 → 4:51 story
   function fill(el){ const p = (el.value-el.min)/(el.max-el.min)*100; el.style.setProperty('--p', p+'%'); }
-  function one(n){ return n>=10 ? Math.round(n).toString() : (Math.round(n*10)/10).toString(); }
+  function one(n){ return n>=10 ? Math.round(n).toString() : n.toFixed(1); }
   function calc(){
     [calls,mins,reps].forEach(fill);
     const c=+calls.value, m=+mins.value, r=+reps.value;
@@ -762,7 +764,7 @@ footer{background:#000000}
     if (reduce){ linesEl.scrollTop = target; return; }
     if (Math.abs(target-start)<1) return;
     const started = performance.now();
-    const duration = 1200;
+    const duration = 400;
     function step(now){
       const progress = Math.min(1, (now-started)/duration);
       const eased = progress*progress*(3-2*progress);
@@ -806,7 +808,7 @@ footer{background:#000000}
     consoleEl.classList.add('running');
     document.getElementById('live-label').textContent = 'Scoring';
     const d = PB[pb];
-    let nextLineAt = 450;
+    let nextLineAt = 250;
     LINES.forEach((line,i)=>{
       timers.push(setTimeout(()=>{
         const li = linesEl.children[i];
@@ -815,14 +817,14 @@ footer{background:#000000}
         li.classList.add('speaking');
         followLine(li);
         const hits = d.cats.map((c,ci)=>c[2]===i?ci:-1).filter(x=>x>=0);
-        if (hits.length){ li.classList.add('hit'); timers.push(setTimeout(()=>li.classList.remove('hit'), 900)); }
+        if (hits.length){ li.classList.add('hit'); timers.push(setTimeout(()=>li.classList.remove('hit'), 450)); }
         hits.forEach(revealCat);
         const shown = d.cats.filter(c=>c[2]<=i);
         if (shown.length) setRing(Math.round(shown.reduce((a,c)=>a+c[1],0)/(d.cats.length*5)*100));
       }, nextLineAt));
-      nextLineAt += Math.max(1800, Math.min(10000, line[1].split(/\s+/).length*230));
+      nextLineAt += Math.max(650, Math.min(2000, line[1].split(/\s+/).length*45));
     });
-    timers.push(setTimeout(finish, nextLineAt+200));
+    timers.push(setTimeout(finish, nextLineAt+150));
   }
   document.querySelectorAll('.playbooks button').forEach(b=>b.addEventListener('click', ()=>selectPlaybook(b.dataset.pb, true)));
   function selectPlaybook(name, play){
